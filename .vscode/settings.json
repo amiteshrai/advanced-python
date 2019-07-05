@@ -1,0 +1,62 @@
+{
+  "python.pythonPath": "bin/python3",
+  "python.linting.lintOnSave": true,
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.linting.pylintArgs": ["--max-line-length=88", "--ignore=E501"],
+  "python.analysis.disabled": ["unresolved-import", "undefined-variable"],
+  "python.formatting.provider": "black",
+  "vsintellicode.python.completionsEnabled": true,
+
+  "editor.minimap.enabled": false,
+  "editor.fontFamily": "Fira Code Retina", // You need to install first
+  "editor.fontSize": 14,
+  "editor.letterSpacing": 1.25,
+  "editor.fontWeight": "100",
+  "editor.wordWrap": "on",
+  "editor.tabSize": 4,
+  "editor.glyphMargin": true,
+  "editor.fontLigatures": true,
+  "editor.cursorStyle": "line",
+  "editor.cursorWidth": 4,
+  "editor.cursorBlinking": "solid",
+  "editor.folding": true,
+  "editor.autoIndent": false,
+  "editor.detectIndentation": false,
+  "editor.renderIndentGuides": false,
+  "editor.renderLineHighlight": "gutter",
+  "editor.renderWhitespace": "none",
+  "editor.trimAutoWhitespace": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": false,
+  "editor.formatOnType": false,
+  "editor.snippetSuggestions": "top",
+  "editor.codeLens": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  },
+
+  "files.trimFinalNewlines": true,
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true,
+    "bin/": true,
+    "etc/": true,
+    "lib/": true
+  },
+  "files.associations": {
+    "*.js": "javascriptreact"
+  },
+
+  // Markdown Linting
+  "markdownlint.run": "onSave",
+
+  // Terminal
+  "terminal.integrated.fontFamily": "Fira Code Retina",
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontWeight": "100"
+}
