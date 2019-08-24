@@ -9,8 +9,8 @@
   "vsintellicode.python.completionsEnabled": true,
 
   "editor.minimap.enabled": false,
-  "editor.fontFamily": "Fira Code Retina", // You need to install first
-  "editor.fontSize": 14,
+  "editor.fontFamily": "Fira Code Medium", // You need to install first
+  "editor.fontSize": 16,
   "editor.letterSpacing": 1.25,
   "editor.fontWeight": "100",
   "editor.wordWrap": "on",
@@ -56,7 +56,7 @@
   "markdownlint.run": "onSave",
 
   // Terminal
-  "terminal.integrated.fontFamily": "Fira Code Retina",
-  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontFamily": "Fira Code",
+  "terminal.integrated.fontSize": 16,
   "terminal.integrated.fontWeight": "100"
 }
