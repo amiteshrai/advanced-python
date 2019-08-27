@@ -9,3 +9,10 @@ Code snippets for learning advance concepts in python like:
 5. Functional Programming
 6. Reactive Programming
 7. Design Patterns
+   - Singleton
+   - Factory Method
+   - Strategy
+   - Observer
+   - Builder
+   - Adapter
+   - State
