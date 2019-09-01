@@ -15,7 +15,7 @@ args = (0, 1, 11, 1)
 args2 = (0, 1, 21, 1)
 
 
-# 1: A Simple Measurement Class
+## 1: A Simple Measurement Class
 
 
 class OhmLaw:
@@ -33,13 +33,13 @@ ohm = OhmLaw()
 result = ohm.make_measurement(*args)
 print(result)
 
-# 2: Running the measurement in a non-blocking way
+## 2: Running the measurement in a non-blocking way
 thread = threading.Thread(target=ohm.make_measurement, args=args)
 thread.start()
 print("Triggered measurement")
-# You will also notice that the program, even if it reached the
-# end, is waiting for the thread t to be complete before exiting
-# We can add a bit more of action in order to realize what is happening:
+## You will also notice that the program, even if it reached the
+## end, is waiting for the thread t to be complete before exiting
+## We can add a bit more of action in order to realize what is happening:
 
 # thread = threading.Thread(target=ohm.make_measurement, args=args)
 # thread.start()
@@ -50,9 +50,9 @@ print("Triggered measurement")
 #     print("Acquiring {}\r".format("." * i), end=" ")
 #     sleep(0.25)
 
-# TODO: What are Threads
+## TODO: What are Threads
 
-# 3: Plotting Results During Acquisition
+## 3: Plotting Results During Acquisition
 
 
 # class OhmLawAgain:
@@ -86,7 +86,7 @@ print("Triggered measurement")
 #         i = ohm.step
 
 
-# # 4: Multiple Threads
+## 4: Multiple Threads
 
 # ohm = OhmLawAgain()
 
@@ -141,10 +141,10 @@ print("Triggered measurement")
 #     print("Error while running multiple measurements")
 
 
-# 5: Stopping a Thread
-# When you are running a long task, it may happen that you need to stop it.
-# Python doesn't allow you to kill threads, which means that we have to find a
-# way around it.
+## 5: Stopping a Thread
+## When you are running a long task, it may happen that you need to stop it.
+## Python doesn't allow you to kill threads, which means that we have to find a
+## way around it.
 
 
 # class OhmLawWithStop:
