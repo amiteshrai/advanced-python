@@ -1,1 +1,1 @@
-""" Functional Programming Intro With RxPy"""
+""" Functional Programming Intro"""
