@@ -1,6 +1,6 @@
 """ Python Class """
 
-# A class with initializer, optional parameters
+## A class with initializer, optional parameters
 class Employee:
     def __init__(self, eid, name, department=None):
         super().__init__()
@@ -39,4 +39,13 @@ p2 = Player("Jason Roy", 99)
 p2.team = "England"
 print(p1)
 print(p2)
-print(id(p1))
+
+
+## Wrong Use of Class Variables
+class Player:
+    team = "India"  # class var
+    formerTeam = []  # wrong use of class var
+
+    def __init__(self, name):
+        super().__init__()
+        self.name = name  # instance var
