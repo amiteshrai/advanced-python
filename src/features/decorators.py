@@ -4,14 +4,16 @@ import functools
 import time
 from datetime import datetime
 
-# Decorators provide a simple syntax for calling higher-order functions.
-# By definition, a decorator is a function that takes another function and extends the
-# behavior of the latter function without explicitly modifying it.
-# In Python, functions are first-class objects. This means that functions can be passed
-# around and used as arguments
+## Decorators provide a simple syntax for calling higher-order functions.
+## By definition, a decorator is a function that takes another function and extends
+## the behavior of the latter function without explicitly modifying it.
+
+## In Python, functions are first-class objects. This means that functions can be
+## passed around and used as arguments
+## Simply put, decorators wrap a function and modify its behaviour
 
 
-# Basic Example
+## Basic Example
 def say_hello(name):
     return f"Hello {name}"
 
@@ -31,7 +33,7 @@ print(greeting)
 
 print("\n")
 
-# Inner Functions
+## Inner Functions
 def parent():
     print("Printing from the parent() function")
 
@@ -49,7 +51,7 @@ parent()
 
 print("\n")
 
-# Returning Function From Within Function
+## Returning Function From Within The Function
 def parent2(num):
     def first_child():
         return "Hi, I am the First Child"
@@ -67,8 +69,8 @@ second = parent2(2)
 print(first, second)
 
 print("\n")
-# Simple Decorators
-# Simply put, decorators wrap a function and modify its behaviour
+
+## Simple Decorators
 def first_decorator(func):
     def wrapper():
         print("Before Function Invocation")
@@ -87,7 +89,7 @@ cheese()
 
 print("\n")
 
-# Another decorator
+## Another decorator
 def run_only_during_day(func):
     def wrapper():
         if 7 <= datetime.now().hour < 22:
@@ -101,9 +103,8 @@ cheese = run_only_during_day(say_cheese)
 cheese()  # No effect if called 10 in the night, till 7 in the morning
 
 print("\n")
-# Adding Syntactic Sugar!
 
-
+## Adding Syntactic Sugar
 @first_decorator
 def greetings():
     print("Hey, Good Morning!")
@@ -113,7 +114,7 @@ greetings()
 
 print("\n")
 
-# Decorating Functions With Arguments
+## Decorating Functions With Arguments
 def fetch_user(func):
     def wrapper(*args, **kwargs):
         print(f"Fetching Data For User: {args[0]}")
@@ -132,7 +133,7 @@ greet_user("Amitesh")
 
 print("\n")
 
-# Returning Value From Wrapper Function
+## Returning Value From Wrapper Function
 def fetch_user_details(func):
     def wrapper(*args, **kwargs):
         print(f"Fetching Data For User: {args[0]}")
@@ -148,11 +149,12 @@ def get_user_details(name):
 
 
 user_details = get_user_details("Amitesh")
+print("Return Value From Wrapper Function")
 print(user_details)
 
 print("\n")
 
-# Preserving Wrapped Function Identity
+## Preserving Wrapped Function Identity
 def wrapper_function(func):
     def wrapper():
         print(f"This is {func.__name__}")
@@ -168,10 +170,11 @@ def wrapped_function():
 
 wrapped_function()
 
-# Decorators should use the @functools.wraps decorator, which will preserve information
-# about the original function.
-# The @functools.wraps decorator uses the function functools.update_wrapper() to update
-# special attributes like __name__ and __doc__ that are used in the introspection.
+## Decorators should use the @functools.wraps decorator, which will preserve
+## information about the original function.
+## The @functools.wraps decorator uses the function functools.update_wrapper() to
+## update special attributes like __name__ and __doc__ that are used in the
+## introspection.
 
 print("\n")
 
@@ -198,3 +201,25 @@ def waste_some_time(num_times):
 
 
 waste_some_time(100)
+
+
+def decorator_func(func):
+    class Wrapper:
+        def __init__(self):
+            self.value = None
+
+        def __call__(self, *args):
+            print("Old value : ", self.value)
+            result = func(*args)
+            print("New value : ", self.value)
+            return result
+
+    return Wrapper()
+
+
+@decorator_func
+def my_func(new_foo):
+    my_func.value = new_foo
+
+
+my_func("test")
