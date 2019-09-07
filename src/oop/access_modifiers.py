@@ -69,7 +69,7 @@ class Employee:
 steve = Employee(3789, 2500)
 steve.display_id()
 print("Steve's ID : ", steve.ID)
-# print("Steve's ID : ", steve.__salary)
+# print("Steve's Salary : ", steve.__salary)
 # print("Steve's Take Home Salary : ", steve.__calc_take_home_salary())
 # To ensure that no one from the outside knows about this
 # private property, the error does not reveal the identity of it.
