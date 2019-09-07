@@ -81,7 +81,7 @@ class Employee:
 
     @classmethod
     def get_employer(cls) -> str:
-        # print(cls, id(cls))
+        print(cls, id(cls), type(cls))
         return cls.org_name
 
     @staticmethod
@@ -112,11 +112,15 @@ class Employee:
             Tax paid by {self.name} : {self.tax()}
             Tax paid by {self.name} after savings : {self.tax(savings=4000.0)}
             Salary per day of {self.name} : {self.salary_per_day()}
+            Organization Name: {self.org_name}
         """
+
+    def get_department(self):
+        return self.department
 
 
 # initializing an object of the Employee class
-pankaj = Employee(3789, "Pankaj Singh", 25000.0, "Human Resources")
+pankaj = Employee(3789, "Pankaj Singh", 25000.0, "Technology")
 print(pankaj)
 print(pankaj.get_employer())
 print(Employee.get_employer())
@@ -127,12 +131,25 @@ emp_salary = Employee.get_salary(
 print(emp_salary)
 
 
+print("\nClass Inheritence\n")
+
+
 class HREmployee(Employee):
-    pass
+    def __init__(self, ID, name, salary=None, department=None):
+        super().__init__(ID, name, salary=salary, department="Human Resource")
+
+    # @property
+    # def department(self):
+    #     return self.department
 
 
-print(
-    HREmployee.get_salary(
-        160000, monthly=False, daily=False, hourly=True, total_hours=12
-    )
+smruti = HREmployee(3789, "Pankaj Singh", 250000.0, "Technology")
+smruti_salary = smruti.get_salary(
+    160000, monthly=False, daily=False, hourly=True, total_hours=12
 )
+print(f"Smruti's Salary / Hour : {smruti_salary}")
+smruti.org_name = "ABC Coporation"
+print(smruti.get_employer())
+smruti.print_employer()
+print(HREmployee.org_name)
+print(smruti)
