@@ -98,11 +98,11 @@ print(my_list)
 
 
 # Default Arguments in Functions
-def increase_values(var1=[1, 1], value=0):
+def increase_values(data=[1, 1], value=0):
     value += 1
-    var1[0] += value
-    var1[1] += value
-    return var1
+    data[0] += value
+    data[1] += value
+    return data
 
 
 print(increase_values())  # [2, 2]
