@@ -19,11 +19,16 @@ class without knowing what’s going on inside.
         Encapsulation in OOP refers to binding the data and the methods to
         manipulate that data together in a single unit, that is, class.
 
+        Note: For encapsulating a class, all the properties should be private and
+              any access to the properties should be through methods such as getters
+              and setters.
+
         * Advantages of Encapsulation
         1. Classes make the code easy to change and maintain.
         2. Properties to be hidden can be specified easily.
         3. We decide which outside classes or functions can access the class properties.
-    2. Abstraction
+
+   2. Abstraction
 """
 
 ## 1: An Example
@@ -77,23 +82,51 @@ class GoodUser:
         self.__password = password
 
     def login(self, username, password):
-        if (self.__username.lower() == username.lower()) and (
-            self.__password == password
-        ):
+        if (self.username == username.lower()) and (self.password == password):
             print(
                 "Access Granted against username:",
-                self.__username.lower(),
+                self.password,
                 "and password:",
                 self.__password,
             )
         else:
             print("Invalid Credentials!")
 
+    @property
+    def username(self):
+        return self.__username.lower()
+
+    @property
+    def password(self):
+        return self.__password
+
 
 steve = GoodUser("steve", "12345")
-## created a new User object and stored the password and username
+## Created a new User object and stored the password and username
 steve.login("steve", "12345")
 ## Grants access because credentials are valid
 steve.login("steve", "6789")
-## does not grant access since the credentails are invalid
-steve.__password  # compilation error will occur due to this line
+## Does not grant access since the credentails are invalid
+# steve.__password
+# Compilation error will occur due to above line
+
+
+## 4: Another Exampple
+class Rectangle:
+    def __init__(self, length, width):
+        super().__init__()
+        self.__length = length
+        self.__width = width
+
+    @property
+    def area(self):
+        return self.__length * self.__width
+
+    @property
+    def perimeter(self):
+        return 2 * (self.__length + self.__width)
+
+
+rect = Rectangle(4, 5)
+print("\nRectangle Area is :", rect.area)
+print("Rectangle Perimeter is : ", rect.perimeter)
