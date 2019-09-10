@@ -20,7 +20,7 @@ but their properties are different. This is called Polymorphism.
 ** Ways to implement polymorphism:
 1. Polymorphism Using Methods.
 2. Polymorphism Using Inheritance.
-    ** Method Overriding
+    1. Method Overriding
     Method overriding is the process of redefining a parent class’s method in a
     subclass.
 
@@ -38,7 +38,10 @@ but their properties are different. This is called Polymorphism.
     4. The method in the derived classes usually have a different implementation from
     one another.
 
-    ** Operator/Method Overloading
+    2. Operator/Method Overloading
+        Show examples to explain.
+    3. Abstract Base Classes
+        Discussed at the very end.
 
 3. Polymorphism Using Duck Typing.
     Duck typing is one of the most useful concepts in Object-Oriented Programming in
@@ -51,7 +54,18 @@ but their properties are different. This is called Polymorphism.
         Duck typing extends the concept of dynamic typing in Python.
         Dynamic typing means we can change the type of an object later in the code.
         Using duck typing, we can achieve polymorphism without inheritance.
+
+** Abstract Base Classes
+    Duck typing is useful as it simplifies the code and the user can implement the
+    functions without worrying about the data type. But this may not be the case
+    all the time. The user might not follow the instructions to implement the
+    necessary steps for duck typing. To cater to this issue, Python introduced the
+    concept of Abstract Base Classes, or ABC.
+
+    Abstract base classes define a set of methods and properties that a class must
+    implement in order to be considered a duck-type instance of that class.
 """
+from abc import ABC, abstractmethod
 
 ## An Example with polymorphism using methods
 # class Rectangle:
@@ -203,3 +217,55 @@ sound.produce_sound(dog)
 sound.produce_sound(cat)
 ugamites = UgamEmployees()
 sound.produce_sound(ugamites)
+
+
+class AbstractShape(ABC):  # Shape is a child class of ABC
+    @abstractmethod
+    def area(self):
+        pass
+
+    @abstractmethod
+    def perimeter(self):
+        pass
+
+
+# abstract = AbstractShape()
+## Above code will not compile since AbstractShape has abstract methods without
+## method definitions in it
+
+
+class Square(AbstractShape):
+    def __init__(self, length):
+        self.length = length
+
+
+# square = Square(4)
+## Above code will not compile since abstarct methods have not been defined in
+## the child class, Square
+
+
+class Triangle(Shape):
+    def __init__(self, side1, side2, side3):
+        super().__init__()
+        self.side1 = side1
+        self.side2 = side2
+        self.side3 = side3
+
+    def area(self):
+        # calculate the semi-perimeter
+        semi_perimeter = (self.side1 + self.side2 + self.side3) / 2
+
+        return (
+            semi_perimeter
+            * (semi_perimeter - self.side1)
+            * (semi_perimeter - self.side2)
+            * (semi_perimeter - self.side3)
+        ) ** 0.5
+
+    def perimeter(self):
+        return self.side1 + self.side2 + self.side3
+
+
+triangle = Triangle(4, 5, 6)
+print(f"area of triangle is : {triangle.area()}")
+print(f"perimeter of triangle is : {triangle.perimeter()}")
